@@ -30,16 +30,26 @@ import { useState } from 'react'
 //     }
 // }
 
+const useContador = (inicial) => {
+    const [contador, setContador] = useState(inicial)
+    const incrementar = () => {
+        setContador(contador + 1)
+    }
+
+    return [contador, incrementar]
+
+}
+
 
 const App = () => {
 
-    const [contador, setContador] = useState(0)
-
+    const [contador, incrementar] = useContador(0)
+    
     return (
 
         <div>
             Contador: {contador}
-            <button onClick={() => setContador(contador + 1)} >
+            <button onClick={ incrementar } >
                 Incrementar
             </button>
         </div>
